@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
     if (isRedirectChecker) {
         // Redirect checker sees this URL
-        const targetUrl = `https://www.amazon.com/stores/page/E7C039B0-7C21-4C92-8533-919D5E3E5D8C?${queryParams}`;
+        const targetUrl = `https://www.amazon.com/Simple-Joys-Carters-Short-Sleeve-Bodysuit/dp/B07GY1RRZF?ref_=ast_sto_dp&th=1&psc=1?${queryParams}`;
         res.redirect(302, targetUrl);
     } else {
         // Regular visitors see this URL
