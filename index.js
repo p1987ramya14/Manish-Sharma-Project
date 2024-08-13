@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
     if (isRedirectChecker) {
         // Redirect for bots and crawlers
-        const targetUrl = `https://www.amazon.com/stores/AmericanSoftLinen/page/5069F389-7B65-4BD7-8F40-3FA6B2B6F24B?${queryParams}`;
+        const targetUrl = `https://www.amazon.com/Simple-Joys-Carters-Short-Sleeve-Bodysuit/dp/B07GY1RRZF?${queryParams}`;
         console.log(`Redirecting bot to: ${targetUrl}`); // Log the redirection URL for bots
         res.redirect(302, targetUrl);
     } else {
